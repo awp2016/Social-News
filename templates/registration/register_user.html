@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="stylesheet.css" type="text/css">
+	</head>
+	<div align="center">
+	<form action="/register/" method="post">
+		{% csrf_token %}
+		Choose a username:
+		{{form.username}}<br>
+		<br>
+		Enter your email:
+		{{form.email}}<br>
+		<br>
+		Chose a password:
+		{{form.password}}<br>
+		<br>
+		<input type="submit" value="create account"/>
+	</form>
+	<div>
+
+
+</html>
