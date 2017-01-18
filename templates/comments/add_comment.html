@@ -1,0 +1,9 @@
+{% include "common/header.html" %}
+
+    <form action="/add_comment/{{ post_id }}/" method="post">
+        {% csrf_token %}
+        {{ form.content }}
+        <button></button>
+    </form>
+
+{% include "common/footer.html" %}
