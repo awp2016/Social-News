@@ -1,0 +1,25 @@
+{
+  "name": "social-news",
+  "version": "1.0.0",
+  "description": "Pynguinii AWP Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/awp2016/Social-News.git"
+  },
+  "keywords": [
+    "pynguinii",
+    "socialnews",
+    "news",
+    "social"
+  ],
+  "author": "Pynguinii",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awp2016/Social-News/issues"
+  },
+  "homepage": "https://github.com/awp2016/Social-News#readme"
+}

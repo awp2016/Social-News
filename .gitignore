@@ -90,3 +90,8 @@ ENV/
 
 # idea generated stuff
 .idea/*
+
+
+# Front-end automatization task
+node_modules
+css
