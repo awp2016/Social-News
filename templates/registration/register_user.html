@@ -1,8 +1,4 @@
-<html>
-	<head>
-		<link rel="stylesheet" href="stylesheet.css" type="text/css">
-	</head>
-	<div align="center">
+{% include "common/header.html" %}
 	<form action="/register/" method="post">
 		{% csrf_token %}
 		Choose a username:
@@ -16,7 +12,4 @@
 		<br>
 		<input type="submit" value="create account"/>
 	</form>
-	<div>
-
-
-</html>
+{% include "common/footer.html" %}

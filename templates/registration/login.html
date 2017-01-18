@@ -1,7 +1,4 @@
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="mystyle.css">
-    </head>
+{% include "common/header.html" %}
 
     <h1>Login</h1>
 
@@ -10,4 +7,5 @@
         {{ form.as_p }}
         <button type = "submit">Log me in</button>
     </form>
-</html>
+
+{% include "common/footer.html" %}
