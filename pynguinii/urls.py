@@ -23,5 +23,6 @@ from login import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^loginpage/', auth_views.login, name='login'),
-    url(r'^register/', views.register_user)
+    url(r'^register/', views.register_user),
+    url(r'^homepage/', views.homepage)
 ]
