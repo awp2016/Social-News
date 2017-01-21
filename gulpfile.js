@@ -10,18 +10,15 @@ var PATHS = {
 }
 
 
-gulp.task('sass-dev', function(){
-    var opts = {
-
-    };
+gulp.task('sass-dev', function () {
+    var opts = {};
 
     return gulp.src(PATHS.SASS.SRC)
-            .pipe(sass(opts))
-            .pipe(gulp.dest(PATHS.SASS.DIST));
+        .pipe(sass(opts))
+        .pipe(gulp.dest(PATHS.SASS.DIST));
 });
 
 
-
-gulp.task('watch', function(){
+gulp.task('watch', function () {
     gulp.watch(PATHS.SASS.SRC, ['sass-dev']);
 })

@@ -1,11 +1,25 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
-
 from django.db import models
+from django.forms.models import ModelForm
+
 
 # Create your models here.
-from django.forms import ModelForm
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password', 'email']
+
+
+class Comment(models.Model):
+    content = models.TextField(default="")
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
 
 
 class Posts(models.Model):

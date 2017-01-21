@@ -18,12 +18,14 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls import url
 from django.contrib import admin
 
-from login import views as login_views
-from homepage import views as homepage_views
+from social_news import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^loginpage/', auth_views.login, name='login'),
-    url(r'^register/', login_views.register_user),
-    url(r'^homepage/', homepage_views.homepage)
+    url(r'^register/', views.register_user),
+    url(r'^register/', views.register_user),
+    url(r'^add-comment/(?P<post_id>\d+)/$', views.add_comment),
+    url(r'^add-post/', views.add_post),
+    url(r'^$', views.homepage)
 ]
