@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html class="no-js">
     <head>
@@ -7,10 +8,30 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
     </head>
     <body>
-        <div id="wrapper">
+        <div id="wrapper" class="container">
             <header id="appHeader">
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <i class="glyphicon glyphicon-th-list"></i>
+                            </button>
+                            <a class="navbar-brand" href="#">Social News</a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#">Edit Profile</a></li>
+                                <li><a href="#">My News</a></li>
+                                <li><a href="#">My Comments</a></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
 
             </header>
