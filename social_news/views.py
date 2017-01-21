@@ -1,5 +1,4 @@
 from django.contrib.auth.models import User
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -56,6 +55,16 @@ def get_post_by_id(request, post_id):
     comments = post.comments.all()
     return render(request, 'view_post.html',
                   {'post': post, 'comments': comments, 'user_list': post.users_liked.all()})
+
+
+def edit_post(request, post_id):
+    post = Posts.objects.get(id=post_id)
+
+
+def delete_post(request, post_id):
+    post = Posts.objects.get(id=post_id)
+    post.delete()
+    return HttpResponseRedirect('/')
 
 
 def increase_by_one(request):

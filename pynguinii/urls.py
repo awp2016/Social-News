@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^add-post/', views.add_post),
     url(r'^increase_by_one/', views.increase_by_one),
     url(r'^post/(?P<post_id>\d+)/$', views.get_post_by_id),
+    url(r'^post/(?P<post_id>\d+)/edit/$', views.edit_post),
+    url(r'^post/(?P<post_id>\d+)/delete/$', views.delete_post),
     url(r'^like_post/(?P<post_id>\d+)/$', views.like_post),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^$', views.homepage)

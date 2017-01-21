@@ -14,6 +14,14 @@
             Titlu: <a href="/post/{{postare.id}}"> {{postare.title}} </a>
             Voturi: {{postare.upvotes}}  Id:{{postare.id}} <br>
         </div>
-        <br>
+        <div class="btn-group">
+            <a href="/post/{{ postare.id }}/edit" class="btn btn-info">
+                Edit
+            </a>
+            <a style="margin-left:15px"  href="/post/{{ postare.id }}/delete" class="btn btn-danger">
+                Delete
+            </a>
+        </div>
+
     {% endfor %}
 {% include "common/footer.html" %}
