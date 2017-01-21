@@ -13,11 +13,11 @@ def add_comment(request, post_id):
         form = CommentForm(data=updated_data)
         if form.is_valid():
             print('Success')
-            form.save()
+            comment = form.save()
             return HttpResponseRedirect('/post/' + post_id)
     else:
         form = CommentForm()
-    return render(request, 'comments/add_comment.html', {'form': form, 'post_id': post_id})
+    return render(request, 'comments/add-comment.html', {'form': form, 'post_id': post_id})
 
 
 def homepage(request):
@@ -44,7 +44,6 @@ def add_post(request):
             return HttpResponseRedirect('/plzlogin')
         form = PostForm(request.POST)
         if form.is_valid():
-            print "All good, chief"
             form.save()
             return HttpResponseRedirect('/')
     else:
@@ -54,8 +53,9 @@ def add_post(request):
 
 def get_post_by_id(request, post_id):
     post = Posts.objects.get(id=post_id)
+    comments = post.comments.all()
     return render(request, 'view_post.html',
-                  {'post': post, 'user_list': post.users_liked.all()})
+                  {'post': post, 'comments': comments, 'user_list': post.users_liked.all()})
 
 
 def increase_by_one(request):

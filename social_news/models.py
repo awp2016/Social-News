@@ -11,22 +11,21 @@ class UserForm(ModelForm):
         model = User
         fields = ['username', 'password', 'email']
 
-
-class Comment(models.Model):
-    content = models.TextField(default="")
-
-
-class CommentForm(ModelForm):
-    class Meta:
-        model = Comment
-        fields = ['content']
-
-
 class Posts(models.Model):
     title = models.CharField(max_length=30)
     upvotes = models.IntegerField(default=0)
     users_liked = models.ManyToManyField(User)
     content = models.TextField(default="")
+
+class Comment(models.Model):
+    content = models.TextField(default="")
+    post = models.ForeignKey('Posts', related_name='comments', blank=True, null=True)
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content', 'post']
 
 
 class PostForm(ModelForm):
