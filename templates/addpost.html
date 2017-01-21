@@ -1,15 +1,9 @@
-<html>
-	<head>
-		<link rel="stylesheet" href="stylesheet.css" type="text/css">
-	</head>
-	<body>
-        <div align="center">
+{% include "common/header.html" %}
+
 	    <form action="/add-post/" method="post">
             {% csrf_token %}
             {{ form }}
             <input type="submit" value="posteaza"/>
         </form>
-        </div>
-    </body>
+{% include "common/footer.html" %}
 
-</html>

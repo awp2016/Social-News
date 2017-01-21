@@ -1,15 +1,4 @@
-{% load staticfiles %}
-<html>
-	<head>
-	</head>
-
-	<div align = "center" font-size = 20px >
-		{{ post.title }}
-	</div>
-
-	<body>
-		<br>
-
+{% include "common/header.html" %}
 		{{ post.content }}
 
 		<br>
@@ -28,7 +17,7 @@
 
 		<form action="/add_comment/{{ post.id }}/" method="post">
     		{% csrf_token %}
- 
+
 			<textarea default="" cols="40" id="id_content" name="content" rows="10" required>
 			</textarea>
 
@@ -40,10 +29,4 @@
 			<input type = "submit" value = "back" />
 		</form>
 
-		<br>
-
-
-	</body>
-
-
-</html>
+{% include "common/footer.html" %}

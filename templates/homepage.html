@@ -1,24 +1,11 @@
-{% load staticfiles %}
-<html>
-	<head>
-	</head>
+{% include "common/header.html" %}
 
-	<div id = "topmenu">
-		<ul>
-		  <li><a class="active" href="#home">Home</a></li>
-		  <li><a href="#news">Add a Post</a></li>
-		  <li><a href="#contact">cevaceva</a></li>
-		  <li style="float:right"><a href="#about">Log Out/in</a></li>
-		</ul>
-	</div>
-
-	<body>
 		<h1>Pynguins Social News</h1>
 				{% if user.is_authenticated %}
 					hello {{ user.username }}
                 {% else %}
 					please log in <a href="/loginpage/">here</a>
-				{% endif %}		
+				{% endif %}
                 {% for postare in postlist %}
                     <br>
                     <div id="postare">
@@ -27,5 +14,4 @@
                     </div>
                     <br>
                 {% endfor %}
-	</body>
-</html>
+{% include "common/footer.html" %}
