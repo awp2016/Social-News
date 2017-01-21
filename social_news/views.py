@@ -37,7 +37,7 @@ def register_user(request):
             return HttpResponseRedirect('/')
     else:
         form = UserForm()
-    return render(request, 'registration/register_user.html', {'form': form})
+    return render(request, 'registration/register.html', {'form': form})
 
 
 def add_post(request):
