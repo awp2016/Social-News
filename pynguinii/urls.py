@@ -18,11 +18,12 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls import url
 from django.contrib import admin
 
-from login import views
+from login import views as login_views
+from homepage import views as homepage_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^loginpage/', auth_views.login, name='login'),
-    url(r'^register/', views.register_user),
-    url(r'^homepage/', views.homepage)
+    url(r'^register/', login_views.register_user),
+    url(r'^homepage/', homepage_views.homepage)
 ]

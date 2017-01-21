@@ -1,8 +1,11 @@
+import datetime
+
 from django.shortcuts import render
 
-# Create your views here.
+from posts.models import Posts
+
 
 def homepage(request):
     now = datetime.datetime.now()
-        entry = Posts.objects.all()
-        return render(request, 'homepg.html',{ 'title':entry[0].title, 'postlist':entry })
+    entry = Posts.objects.all()
+    return render(request, 'homepage.html', {'title': entry[0].title, 'postlist': entry})
