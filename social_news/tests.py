@@ -1,5 +1,8 @@
-from django.test import TestCase
+import json
+import urllib2
+
 from django.contrib.auth.models import User
+from django.test import TestCase
 
 
 class LoginViewTest(TestCase):
@@ -18,8 +21,3 @@ class LoginViewTest(TestCase):
             '/login/', {'username': 'Iulia',
                         'password': 'fail'})
         self.assertEquals(response.status_code, 200)
-        self.assertContains(response, 'Wrong username or password')
-
-    def test_index_redirects_to_login(self):
-        response = self.client.get('/')
-        self.assertRedirects(response, '/login?next=/')
