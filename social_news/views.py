@@ -57,10 +57,13 @@ def add_post(request):
 
 def edit_post(request, post_id):
     if request.method == 'POST':
-        form = PostForm(data=request.POST)
+        post = Posts.objects.get(id=post_id)
+        form = PostForm(data=request.POST, instance=post)
         if form.is_valid():
             form.save()
-        return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/post/' + post_id)
+        else:
+            return HttpResponseRedirect('/')
     else:
         post = Posts.objects.get(id=post_id)
         return render(request, 'post/edit.html', {'post': post})
