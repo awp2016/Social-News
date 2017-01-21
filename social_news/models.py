@@ -11,11 +11,13 @@ class UserForm(ModelForm):
         model = User
         fields = ['username', 'password', 'email']
 
+
 class Posts(models.Model):
     title = models.CharField(max_length=30)
     upvotes = models.IntegerField(default=0)
     users_liked = models.ManyToManyField(User)
     content = models.TextField(default="")
+
 
 class Comment(models.Model):
     content = models.TextField(default="")
