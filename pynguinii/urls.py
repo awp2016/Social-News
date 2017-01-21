@@ -27,7 +27,6 @@ from social_news import views
 from social_news.models import Posts
 
 urlpatterns = [
-<<<<<<< HEAD
                   url(r'^admin/', admin.site.urls),
                   url(r'^login/', auth_views.login, name='login'),
                   url(r'^register/', views.register_user),
