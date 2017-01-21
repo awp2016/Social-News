@@ -1,12 +1,12 @@
 {% include "common/header.html" %}
-    <form action="/post/{{post.id}}/edit/" method="POST">
+    <form action="/post/{{post.id}}/edit/" method="POST" id="postEdit">
         {% csrf_token %}
         <div class="panel">
             <div class="panel-body">
-                <div class="input-group">
+                <div class="input-group col-lg-12">
                     <input class="form-control" type="text" name="title" value="{{post.title}}">
                 </div>
-                <div class="input-group">
+                <div class="input-group col-lg-12">
                     <textarea name="content" class="form-control">{{post.content}}</textarea>
                 </div>
             </div>
