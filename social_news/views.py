@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -27,7 +29,9 @@ def register_user(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
-            form.save()
+            data = form.cleaned_data
+            user = User.objects.create_user(data.get('username'), data.get('email'), data.get('password'))
+            user.save()
             return HttpResponseRedirect('/')
     else:
         form = UserForm()
