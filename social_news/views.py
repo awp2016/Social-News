@@ -47,13 +47,13 @@ def add_post(request):
             return HttpResponseRedirect('/')
     else:
         form = PostForm()
-    return render(request, 'addpost.html', {'form': form})
+    return render(request, 'post/add.html', {'form': form})
 
 
 def get_post_by_id(request, post_id):
     post = Posts.objects.get(id=post_id)
     comments = post.comments.all()
-    return render(request, 'view_post.html',
+    return render(request, 'post/view.html',
                   {'post': post, 'comments': comments, 'user_list': post.users_liked.all()})
 
 
