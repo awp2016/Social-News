@@ -29,7 +29,8 @@
 		</form>
 
         {% for comment in comments %}
-			{{ comment.content }}<br>
+            <p>Comment posted by: {{ comment.user }}</p>
+			{{ comment.content }}
 		{% endfor %}
 
 

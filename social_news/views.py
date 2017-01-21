@@ -2,7 +2,8 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from social_news.models import CommentForm, UserForm, PostForm, Posts
+from social_news.forms import CommentForm, UserForm, PostForm
+from social_news.models import Posts
 
 
 def add_comment(request, post_id):
@@ -13,6 +14,8 @@ def add_comment(request, post_id):
         if form.is_valid():
             print('Success')
             comment = form.save()
+            comment.user = request.user
+            comment.save()
             return HttpResponseRedirect('/post/' + post_id)
     else:
         form = CommentForm()
@@ -43,22 +46,24 @@ def add_post(request):
             return HttpResponseRedirect('/plzlogin')
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save()
+            post.user = request.user
+            post.save()
             return HttpResponseRedirect('/')
     else:
         form = PostForm()
     return render(request, 'post/add.html', {'form': form})
 
+
 def edit_post(request, post_id):
     if request.method == 'POST':
         form = PostForm(data=request.POST)
         if form.is_valid():
-            form.save();
+            form.save()
         return HttpResponseRedirect('/')
     else:
         post = Posts.objects.get(id=post_id)
-        return render(request, 'post/edit.html', {'post': post});
-
+        return render(request, 'post/edit.html', {'post': post})
 
 
 def get_post_by_id(request, post_id):
@@ -66,6 +71,20 @@ def get_post_by_id(request, post_id):
     comments = post.comments.all()
     return render(request, 'post/view.html',
                   {'post': post, 'comments': comments, 'user_list': post.users_liked.all()})
+
+
+def get_my_news(request):
+    current_user = request.user
+    posts = current_user.user_posts.all()
+    return render(request, 'my_news.html',
+                  {'posts': posts})
+
+
+def get_my_comments(request):
+    current_user = request.user
+    comments = current_user.user_comments.all()
+    return render(request, 'my_comments.html',
+                  {'comments': comments})
 
 
 def delete_post(request, post_id):

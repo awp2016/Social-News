@@ -1,0 +1,8 @@
+{% include "common/header.html" %}
+    {% for comment in comments %}
+      <p>Ai comentat <strong>"{{ comment.content }}"</strong>
+        la postarea cu titlul
+        "<a href="/post/{{ comment.post.id }}"> {{ comment.post.title }} </a>"
+      </p>
+    {% endfor %}
+{% include "common/footer.html" %}

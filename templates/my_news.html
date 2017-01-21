@@ -1,15 +1,5 @@
 {% include "common/header.html" %}
-{% if user.is_authenticated %}
-    <h3>Welcome back, {{ user.username }}</h3>
-{% else %}
-    <div class="alert alert-warning text-center" role="alert">
-        <span class="glyphicon glyphicon-exclamation-sign"></span>
-        <p>You can not use this awesome website without an account. Please <a href="/login">login</a> or <a
-                href="/register">register</a></p>
-    </div>
-{% endif %}
-{% if user.is_authenticated %}
-    {% for postare in postlist %}
+    {% for postare in posts %}
 
         <div id="postare">
             Titlu: <a href="/post/{{ postare.id }}"> {{ postare.title }} </a>
@@ -24,6 +14,4 @@
             </a>
         </div>
     {% endfor %}
-{% endif %}
-
 {% include "common/footer.html" %}
