@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib.auth import views as auth_views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.conf.urls import url
 from django.contrib import admin
 
@@ -32,4 +35,4 @@ urlpatterns = [
     url(r'^like_post/(?P<post_id>\d+)/$', views.like_post),
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^$', views.homepage)
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
