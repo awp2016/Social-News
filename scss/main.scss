@@ -1,3 +1,9 @@
+//Theme - Paper
+@import 'node_modules/bootswatch/paper/bootstrap.min.scss';
+
+@import 'node_modules/bootswatch/paper/bootswatch';
+@import 'node_modules/bootswatch/paper/variables';
+
 @import 'pages/userMeta';
 
 @import 'pages/home';

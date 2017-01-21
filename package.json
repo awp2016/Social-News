@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/awp2016/Social-News/issues"
   },
-  "homepage": "https://github.com/awp2016/Social-News#readme"
+  "homepage": "https://github.com/awp2016/Social-News#readme",
+  "dependencies": {
+    "bootswatch": "^3.3.7"
+  }
 }
