@@ -2,13 +2,14 @@
 	<head>
 		<link rel="stylesheet" href="stylesheet.css" type="text/css">
 	</head>
-	<div align="center">
-	<form action="/addpost/" method="post">
-		{% csrf_token %}
-		{{ form }}
-		<input type="submit" value="posteaza"/>
-	</form>
-	<div>
-
+	<body>
+        <div align="center">
+	    <form action="/add-post/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="posteaza"/>
+        </form>
+        <div>
+    </body>
 
 </html>

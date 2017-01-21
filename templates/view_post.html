@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<html>
+	<head>
+	</head>
+
+	<div align = "center" font-size = 20px >
+		{{ post.title }}
+	</div>
+
+	<body>
+		<br>
+
+		{{ post.content }}
+
+		<br>
+
+		<p>Post upvotes : {{ post.upvotes }} upvotes</p>
+
+		<form action = "/like_post/{{ post.id }}">
+			<input type = "submit" value = "Susvot" />
+		</form>
+
+		<p>Users who liked this post: </p>
+		{% for user in user_list %}
+			{{ user.username }}
+		{% endfor %}
+
+
+		<form action="/add_comment/{{ post.id }}/" method="post">
+    		{% csrf_token %}
+ 
+			<textarea default="" cols="40" id="id_content" name="content" rows="10" required>
+			</textarea>
+
+    		<input type="submit" value="Submit" />
+		</form>
+		<br>
+
+		{% for comment in comments_list %}
+			{{ comment.content }}<br>
+		{% endfor %}
+
+		<br>
+		<form action = "/">
+			<input type = "submit" value = "back" />
+		</form>
+
+		<br>
+
+
+	</body>
+
+
+</html>

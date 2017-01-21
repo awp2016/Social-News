@@ -28,7 +28,7 @@ def register_user(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/homepage/')
+            return HttpResponseRedirect('/')
     else:
         form = UserForm()
     return render(request, 'registration/register_user.html', {'form': form})
@@ -41,7 +41,38 @@ def add_post(request):
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/homepage')
+            return HttpResponseRedirect('/')
     else:
         form = PostForm()
-    return render(request, 'addpost.html', {'form': form})
+    return render(request, 'add-post.html', {'form': form})
+
+
+def get_post_by_id(request, post_id):
+    post = Posts.objects.get(id=post_id)
+    comments_list = post.comment_set.all()
+    return render(request, 'view_post.html',
+                  {'post': post, 'user_list': post.users_liked.all(), 'comments_list': comments_list})
+
+
+def increase_by_one(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/plzlogin')
+    else:
+        entry = Posts.objects.get(id=1)
+        if request.user not in entry.users_liked.all():
+            entry.users_liked.add(request.user)
+            entry.upvotes += 1
+        entry.save()
+        return HttpResponseRedirect('/')
+
+
+def like_post(request, post_id):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/plzlogin')
+    else:
+        entry = Posts.objects.get(id=post_id)
+        if request.user not in entry.users_liked.all():
+            entry.users_liked.add(request.user)
+            entry.upvotes += 1
+        entry.save()
+        return HttpResponseRedirect('/post/' + post_id)

@@ -27,5 +27,9 @@ urlpatterns = [
     url(r'^register/', views.register_user),
     url(r'^add-comment/(?P<post_id>\d+)/$', views.add_comment),
     url(r'^add-post/', views.add_post),
+    url(r'^increase_by_one/', views.increase_by_one),
+    url(r'^post/(?P<post_id>\d+)/$', views.get_post_by_id),
+    url(r'^like_post/(?P<post_id>\d+)/$', views.like_post),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^$', views.homepage)
 ]
