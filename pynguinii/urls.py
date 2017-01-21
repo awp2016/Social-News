@@ -27,6 +27,7 @@ from social_news import views
 from social_news.models import Posts
 
 urlpatterns = [
+<<<<<<< HEAD
                   url(r'^admin/', admin.site.urls),
                   url(r'^login/', auth_views.login, name='login'),
                   url(r'^register/', views.register_user),
@@ -39,6 +40,7 @@ urlpatterns = [
                   url(r'^like_post/(?P<post_id>\d+)/$', views.like_post),
                   url(r'^my_news/$', views.get_my_news),
                   url(r'^my_comments/$', views.get_my_comments),
+                  url(r'^my_profile/$', views.my_profile),
                   url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
                   url(r'^$', views.homepage)
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

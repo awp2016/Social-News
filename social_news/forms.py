@@ -17,6 +17,10 @@ class UserForm(forms.ModelForm):
             'password': forms.PasswordInput(),
         }
 
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['email']
 
 class CommentForm(forms.ModelForm):
     class Meta:

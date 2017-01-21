@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
-from social_news.forms import CommentForm, UserForm, PostForm
+from social_news.forms import CommentForm, UserForm, PostForm, UserProfileForm
 from social_news.models import Posts
 
 
@@ -38,6 +38,16 @@ def register_user(request):
     else:
         form = UserForm()
     return render(request, 'registration/register.html', {'form': form})
+
+def my_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = UserProfileForm({'email': request.user.email});
+    return render(request, 'my_account.html', {'form': form});
 
 
 def add_post(request):

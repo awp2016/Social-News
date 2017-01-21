@@ -1,0 +1,9 @@
+{% include "common/header.html" %}
+    <form action="/my_profile/" method="POST" id="userProfile">
+        {% csrf_token %}
+        <div class="input-group col-lg-12">
+            {{form.as_p}}
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+    </form>
+{% include "common/footer.html" %}

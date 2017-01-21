@@ -1,0 +1,9 @@
+#userProfile {
+    input {
+        @extend .form-control;
+    }
+
+    .btn {
+        margin-top: 20px;
+    }
+}
