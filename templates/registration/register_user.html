@@ -1,15 +1,30 @@
 {% include "common/header.html" %}
-	<form action="/register/" method="post">
+	<form action="/register/" method="post" id="registerForm">
 		{% csrf_token %}
-		Choose a username:
-		{{form.username}}<br>
-		<br>
-		Enter your email:
-		{{form.email}}<br>
-		<br>
-		Chose a password:
-		{{form.password}}<br>
-		<br>
-		<input type="submit" value="create account"/>
+		<div class="panel">
+			<div class="panel-heading">
+				<h5>Register</h5>
+			</div>
+			<div class="panel-body">
+				<div class="input-group">
+					<span class="input-group-addon">Username</span>
+					{{form.username}}
+				</div>
+
+				<div class="input-group">
+					<span class="input-group-addon">Email</span>
+					{{form.email}}
+				</div>
+
+				<div class="input-group">
+					<span class="input-group-addon">Password</span>
+					{{form.password}}
+				</div>
+			</div>
+			<div class="panel-footer">
+				<button class="btn btn-primary">Create account</button>
+			</div>
+		</div>
 	</form>
+
 {% include "common/footer.html" %}

@@ -15,21 +15,39 @@ please login with an account that has access.</p>
 {% endif %}
 {% endif %}
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="{% url 'login' %}" id="loginForm">
     {% csrf_token %}
-    <table>
-        <tr>
-            <td>{{ form.username.label_tag }}</td>
-            <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-        </tr>
-    </table>
-    
-    <input type="submit" value="login" />
-    <input type="hidden" name="next" value="{{ next }}" />
+    <div class="panel">
+        <div class="panel-heading">
+            <h5>Login</h5>
+        </div>
+        <div class="panel-body">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">{{ form.username.label_tag }}</span>
+                {{ form.username }}
+            </div>
+
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">{{ form.password.label_tag }}</span>
+                {{ form.password }}
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="btn-group-vertical" role="group" aria-label="...">
+                <button class="btn btn-primary">Login</button>
+                <a href="" class="btn btn-default">Recover my password</a>
+            </div>
+
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+    </div>
+    <div class="row">
+
+
+
+    </div>
+
+
 </form>
 
 {% endblock %}
