@@ -1,0 +1,20 @@
+.is-member {
+    .only-member {
+        display: block;
+    }
+
+    .only-guest {
+        display: none;
+    }
+}
+
+.is-guest {
+
+    .only-member {
+        display: none;
+    }
+
+    .only-guest {
+        display: block;
+    }
+}
