@@ -1,37 +1,43 @@
 {% include "common/header.html" %}
-		{{ post.content }}
+	<div class="container-fluid">
+		<div class="well well-lg">
+			<p>{{ post.content }}</p>
 
-		<br>
+			<footer class="post-footer">
+				<a href="/like_post/{{ post.id }}">
+					Like <i class="glyphicon glyphicon-heart"></i>
+				</a>
+			</footer>
+		</div>
 
-		<p>Post upvotes : {{ post.upvotes }} upvotes</p>
+		<h3>Comments</h3>
+		<ul class="list-group" id="postComments">
+			{% for comment in comments %}
+			<li class="list-group-item">
+				<span class="author"><strong>{{ comment.user }}</strong> said:</span>
+				{{ comment.content }}
+			</li>
+			{% endfor %}
+		</ul>
 
-		<form action = "/like_post/{{ post.id }}">
-			<input type = "submit" value = "Susvot" />
-		</form>
+		<h3>Votes ({{ post.upvotes }})</h3>
+		<ul class="list-group" id="postVotes">
+			{% for user in user_list %}
+				<li class="list-group-item">
+					{{ user.username }}
+				</li>
+			{% endfor %}
+		</ul>
 
-		<p>Users who liked this post: </p>
-		{% for user in user_list %}
-			{{ user.username }}
-		{% endfor %}
-
-		<form action="{%  url 'add_comment' post.id %}" method="post">
+		<h3>Submit your comment</h3>
+		<form action="{%  url 'add_comment' post.id %}" method="post" id="postAddComment">
     		{% csrf_token %}
- 
-			<textarea default="" cols="40" id="id_content" name="content" rows="10" required>
-			</textarea>
-
-    		<input type="submit" value="Submit" />
-		</form>
-		<br>
-
-		<form action = "/">
-			<input type = "submit" value = "back" />
+			<textarea name="content" rows="5" required></textarea>
+			<button type="submit" class="btn btn-block btn-primary">Submit</button>
 		</form>
 
-        {% for comment in comments %}
-            <p>Comment posted by: {{ comment.user }}</p>
-			{{ comment.content }}
-		{% endfor %}
+		<a href="/" class="btn btn-block btn-default">Go Back To Articles</a>
+	</div>
 
 
 {% include "common/footer.html" %}
