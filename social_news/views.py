@@ -54,9 +54,8 @@ def add_post(request):
 
 def get_post_by_id(request, post_id):
     post = Posts.objects.get(id=post_id)
-    comments_list = post.comment_set.all()
     return render(request, 'view_post.html',
-                  {'post': post, 'user_list': post.users_liked.all(), 'comments_list': comments_list})
+                  {'post': post, 'user_list': post.users_liked.all()})
 
 
 def increase_by_one(request):
