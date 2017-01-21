@@ -5,7 +5,7 @@ var sass = require('gulp-sass');
 var PATHS = {
     SASS: {
         SRC: 'scss/**/*.scss',
-        DIST: 'css'
+        DIST: 'static/css'
     }
 }
 
