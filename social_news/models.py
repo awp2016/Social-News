@@ -3,13 +3,16 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from django.forms.models import ModelForm
-
+from django import forms
 
 # Create your models here.
 class UserForm(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'password', 'email']
+        widgets = {
+            'password': forms.PasswordInput(),
+        }
 
 class Posts(models.Model):
     title = models.CharField(max_length=30)
