@@ -1,0 +1,19 @@
+{% include "common/header.html" %}
+    <form action="/post/{{post.id}}/edit/" method="POST">
+        {% csrf_token %}
+        <div class="panel">
+            <div class="panel-body">
+                <div class="input-group">
+                    <input class="form-control" type="text" value="{{post.title}}">
+                </div>
+                <div class="input-group">
+                    <textarea class="form-control">{{post.content}}</textarea>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+{% include "common/footer.html" %}

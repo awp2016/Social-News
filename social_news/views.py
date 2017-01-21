@@ -49,16 +49,23 @@ def add_post(request):
         form = PostForm()
     return render(request, 'post/add.html', {'form': form})
 
+def edit_post(request, post_id):
+    if request.method == 'POST':
+        form = PostForm(data=request.POST)
+        if form.is_valid():
+            form.save();
+        return HttpResponseRedirect('/')
+    else:
+        post = Posts.objects.get(id=post_id)
+        return render(request, 'post/edit.html', {'post': post});
+
+
 
 def get_post_by_id(request, post_id):
     post = Posts.objects.get(id=post_id)
     comments = post.comments.all()
     return render(request, 'post/view.html',
                   {'post': post, 'comments': comments, 'user_list': post.users_liked.all()})
-
-
-def edit_post(request, post_id):
-    post = Posts.objects.get(id=post_id)
 
 
 def delete_post(request, post_id):
