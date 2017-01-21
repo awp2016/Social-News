@@ -10,19 +10,25 @@
 {% endif %}
 {% if user.is_authenticated %}
     {% for postare in postlist %}
-
-        <div id="postare">
-            Titlu: <a href="/post/{{ postare.id }}"> {{ postare.title }} </a>
-            Voturi: {{ postare.upvotes }} Id:{{ postare.id }} <br>
-        </div>
-        <div class="btn-group">
-            <a href="/post/{{ postare.id }}/edit" class="btn btn-info">
-                Edit
-            </a>
-            <a style="margin-left:15px" href="/post/{{ postare.id }}/delete" class="btn btn-danger">
-                Delete
-            </a>
-        </div>
+        <ul class="list-group" id="postsList">
+            <li class="list-group-item">
+                <span class="badge">{{ postare.upvotes }}</span>
+                <h4 class="list-group-item-heading">
+                    <a href="/post/{{ postare.id }}">{{ postare.title }}</a>
+                </h4>
+                <p class="list-group-item-text">
+                    {{ postare.content }}
+                </p>
+                <div class="btn-group btn-group-xs postMeta">
+                    <a href="/post/{{ postare.id }}/edit" class="btn btn-info">
+                        Edit
+                    </a>
+                    <a href="/post/{{ postare.id }}/delete" class="btn btn-danger">
+                        Delete
+                    </a>
+                </div>
+            </li>
+        </ul>
     {% endfor %}
 {% endif %}
 
