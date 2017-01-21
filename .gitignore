@@ -92,6 +92,8 @@ stefanz/
 # idea generated stuff
 .idea/*
 
+#Database
+db.sqlite3
 
 # Front-end automatization task
 node_modules
