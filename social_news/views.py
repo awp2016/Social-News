@@ -22,7 +22,7 @@ def add_comment(request, post_id):
 
 def homepage(request):
     entries = Posts.objects.all()
-    return render(request, 'homepage.html', {'entries': entries})
+    return render(request, 'homepage.html', {'postlist': entries})
 
 
 def register_user(request):
@@ -44,6 +44,7 @@ def add_post(request):
             return HttpResponseRedirect('/plzlogin')
         form = PostForm(request.POST)
         if form.is_valid():
+            print "All good, chief"
             form.save()
             return HttpResponseRedirect('/')
     else:

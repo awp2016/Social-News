@@ -14,21 +14,18 @@
 
 	<body>
 		<h1>Pynguins Social News</h1>
-
-				{% if user.isauthenticated %}
+				{% if user.is_authenticated %}
 					hello {{ user.username }}
-					{% else %}
+                {% else %}
 					please log in <a href="/loginpage/">here</a>
 				{% endif %}		
-			{% for postare in postlist %}
-			<br>
-
-			<br>
-			<div id="postare">
-				Titlu: <a href="/post/{{postare.id}}"> {{postare.title}} </a>
-				Voturi: {{postare.upvotes}}  Id:{{postare.id}} <br>
-			</div>
-			<br>
-			{% endfor %}
+                {% for postare in postlist %}
+                    <br>
+                    <div id="postare">
+                        Titlu: <a href="/post/{{postare.id}}"> {{postare.title}} </a>
+                        Voturi: {{postare.upvotes}}  Id:{{postare.id}} <br>
+                    </div>
+                    <br>
+                {% endfor %}
 	</body>
 </html>
