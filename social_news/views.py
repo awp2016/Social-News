@@ -44,7 +44,7 @@ def add_post(request):
             return HttpResponseRedirect('/')
     else:
         form = PostForm()
-    return render(request, 'add-post.html', {'form': form})
+    return render(request, 'addpost.html', {'form': form})
 
 
 def get_post_by_id(request, post_id):
