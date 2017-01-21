@@ -1,17 +1,19 @@
 {% include "common/header.html" %}
+    {% if user.is_authenticated %}
+    	<h3>Welcome back, {{ user.username }}</h3>
+    {% else %}
+        <div class="alert alert-warning text-center" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <p>You can not use this awesome website without an account. Please <a href="/login">login</a> or <a href="/register">register</a></p>
+        </div>
+    {% endif %}
 
-		<h1>Pynguins Social News</h1>
-				{% if user.is_authenticated %}
-					hello {{ user.username }}
-                {% else %}
-					please log in <a href="/loginpage/">here</a>
-				{% endif %}
-                {% for postare in postlist %}
-                    <br>
-                    <div id="postare">
-                        Titlu: <a href="/post/{{postare.id}}"> {{postare.title}} </a>
-                        Voturi: {{postare.upvotes}}  Id:{{postare.id}} <br>
-                    </div>
-                    <br>
-                {% endfor %}
+    {% for postare in postlist %}
+
+        <div id="postare">
+            Titlu: <a href="/post/{{postare.id}}"> {{postare.title}} </a>
+            Voturi: {{postare.upvotes}}  Id:{{postare.id}} <br>
+        </div>
+        <br>
+    {% endfor %}
 {% include "common/footer.html" %}

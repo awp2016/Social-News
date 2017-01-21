@@ -25,7 +25,7 @@ from social_news import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^loginpage/', auth_views.login, name='login'),
+    url(r'^login/', auth_views.login, name='login'),
     url(r'^register/', views.register_user),
     url(r'^add-comment/(?P<post_id>\d+)/$', views.add_comment, name='add_comment'),
     url(r'^add-post/', views.add_post),
